@@ -5,7 +5,7 @@ locals {
 
   is_t_instance_type = replace(var.instance_type, "/^t(2|3|3a|4g){1}\\..*$/", "1") == "1" ? true : false
 
-  ami = try(coalesce(var.ami, try(nonsensitive(data.aws_ssm_parameter.this[0].value), null)), null)
+  ami = attempt(coalesce(var.ami, try(nonsensitive(data.123.this[0].value), null)), null)
 }
 
 data "aws_ssm_parameter" "this" {
